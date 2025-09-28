@@ -23,6 +23,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import FloatingChatbot from "@/components/FloatingChatbot";
 
 export default function Home() {
   return (
@@ -101,6 +102,12 @@ export default function Home() {
               >
                 📖 Tài liệu
               </a>
+              {/* <a
+                href="/chat"
+                className="px-4 py-2 bg-blue-400/20 hover:bg-blue-400/30 text-yellow-100 hover:text-white rounded-lg transition-all duration-300 border border-blue-400/30 hover:border-blue-400/50"
+              >
+                🤖 AI Chat
+              </a> */}
             </nav>
             {/* Mobile Navigation */}
             <DropdownMenu>
@@ -147,6 +154,15 @@ export default function Home() {
                   >
                     <span>📖</span>
                     <span>Tài liệu</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a
+                    href="/chat"
+                    className="flex items-center space-x-2 py-3"
+                  >
+                    <span>🤖</span>
+                    <span>AI Chat</span>
                   </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -1174,6 +1190,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Floating Chatbot */}
+      <FloatingChatbot />
     </div>
   );
 }
