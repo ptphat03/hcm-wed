@@ -30,7 +30,11 @@ const featuredExhibits = [
     year: "1920-1969",
     audioUrl: "/audio/ho-chi-minh-solidarity.mp3",
     relatedLinks: [
-      { title: "Dòng thời gian", url: "/star-library", type: "document" as const },
+      {
+        title: "Dòng thời gian",
+        url: "/star-library",
+        type: "document" as const,
+      },
       {
         title: "Tư tưởng chính trị",
         url: "/thoughts",
@@ -118,34 +122,37 @@ const quickLinks = [
     icon: Lightbulb,
     title: "Tư tưởng cốt lõi",
     description: "Những quan điểm chủ đạo về đoàn kết quốc tế",
-    href: "/core-thoughts",
+    modalType: "core-thoughts" as const,
     color: "from-yellow-400 to-orange-500",
   },
   {
     icon: Target,
     title: "Mục tiêu chiến lược",
     description: "Định hướng và mục tiêu lâu dài trong quan hệ quốc tế",
-    href: "/strategic-goals",
+    modalType: "strategic-goals" as const,
     color: "from-blue-400 to-purple-500",
   },
   {
     icon: Users,
     title: "Hợp tác đa phương",
     description: "Các hình thức hợp tác với nhiều quốc gia và tổ chức",
-    href: "/multilateral",
+    modalType: "multilateral" as const,
     color: "from-green-400 to-teal-500",
   },
   {
     icon: Globe,
     title: "Tầm nhìn toàn cầu",
     description: "Góc nhìn toàn diện về vấn đề quốc tế và khu vực",
-    href: "/global-vision",
+    modalType: "global-vision" as const,
     color: "from-red-400 to-pink-500",
   },
 ];
 import FloatingChatbot from "@/components/FloatingChatbot";
+import { QuickAccessModal } from "@/components/ui/QuickAccessModal";
 
 export default function Home() {
+  const [selectedModal, setSelectedModal] = React.useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (
     <div className="min-h-screen">
       {/* Enhanced Hero Section */}
@@ -187,7 +194,7 @@ export default function Home() {
         </motion.section>
 
         {/* Key Statistics */}
-        <motion.section
+        {/* <motion.section
           className="py-16 bg-gradient-to-r from-black/40 to-black/60 rounded-3xl border border-gray-800"
           variants={staggerContainer}
           initial="initial"
@@ -226,9 +233,9 @@ export default function Home() {
               })}
             </div>
           </div>
-        </motion.section>
+        </motion.section> */}
 
-        {/* Quick Access Links */}
+        {/* Quick Access  */}
         <motion.section
           className="space-y-16"
           variants={staggerContainer}
@@ -256,9 +263,14 @@ export default function Home() {
               const Icon = link.icon;
               return (
                 <motion.div key={index} variants={slideUpFadeIn}>
-                  <Link
-                    href={link.href}
-                    className="group block p-6 bg-gradient-to-br from-gray-900/50 to-black/50 rounded-2xl border border-gray-800 hover:border-gray-600 transition-all duration-300 h-full"
+                  <motion.div
+                    className="group block p-6 bg-gradient-to-br from-gray-900/50 to-black/50 rounded-2xl border border-gray-800 hover:border-gray-600 transition-all duration-300 h-full cursor-pointer"
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setSelectedModal(link.modalType);
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <div className="space-y-4">
                       <div
@@ -275,11 +287,11 @@ export default function Home() {
                         </p>
                       </div>
                       <div className="flex items-center text-gray-500 group-hover:text-yellow-400 transition-colors">
-                        <span className="text-sm">Tìm hiểu thêm</span>
+                        <span className="text-sm">Xem chi tiết</span>
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
-                  </Link>
+                  </motion.div>
                 </motion.div>
               );
             })}
@@ -305,7 +317,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/star-library"
+                href="/timeline"
                 className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-red-500 text-black font-semibold rounded-xl hover:from-yellow-500 hover:to-red-600 transition-all duration-300 inline-flex items-center justify-center"
               >
                 <Clock className="w-5 h-5 mr-2" />
@@ -325,6 +337,21 @@ export default function Home() {
 
       {/* Floating Chatbot */}
       <FloatingChatbot />
+
+      {/* Quick Access Modal */}
+      {selectedModal && (
+        <QuickAccessModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          type={
+            selectedModal as
+              | "core-thoughts"
+              | "strategic-goals"
+              | "multilateral"
+              | "global-vision"
+          }
+        />
+      )}
     </div>
   );
 }
