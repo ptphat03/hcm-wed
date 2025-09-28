@@ -3,17 +3,60 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: [
-      "i.ytimg.com",
-      "www.google.com",
-      "blogger.googleusercontent.com",
-      "file3.qdnd.vn",
-      "vov.vn",
-      "bcp.cdnchinhphu.vn",
-      "vufo.org.vn",
-      "vstatic.vietnam.vn",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.google.com",
+      },
+      {
+        protocol: "https",
+        hostname: "blogger.googleusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "file3.qdnd.vn",
+      },
+      {
+        protocol: "https",
+        hostname: "vov.vn",
+      },
+      {
+        protocol: "https",
+        hostname: "bcp.cdnchinhphu.vn",
+      },
+      {
+        protocol: "https",
+        hostname: "vufo.org.vn",
+      },
+      {
+        protocol: "https",
+        hostname: "vstatic.vietnam.vn",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.britannica.com",
+      },
+      {
+        protocol: "https",
+        hostname: "th.bing.com",
+      },
+      {
+        protocol: "https",
+        hostname: "e7.pngegg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "nghiencuuquocte.org",
+      },
     ],
   },
 };
