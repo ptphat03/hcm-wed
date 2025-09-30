@@ -15,19 +15,20 @@ import {
 import HeroSection from "@/components/hero/HeroSection";
 import MuseumExhibit from "@/components/museum/MuseumExhibit";
 import { slideUpFadeIn, staggerContainer } from "@/utils/animations";
+import Description1 from "@/components/museum/description_1";
+import Description2 from "@/components/museum/description_2";
+import Description3 from "@/components/museum/description_3";
 
 const featuredExhibits = [
   {
     id: "ho-chi-minh-solidarity",
-    title: "Tư tưởng Đoàn kết Quốc tế",
-    subtitle: "Chủ tịch Hồ Chí Minh",
-    description:
-      "Khám phá những tư tưởng sâu sắc về đoàn kết quốc tế của vị lãnh tụ vĩ đại",
+    title: "Sự cần thiết phải đoàn kết quốc tế",
+    subtitle: "Chủ tịch Hồ Chí Minh khẳng định đoàn kết quốc tế là yêu cầu tất yếu, nhằm kết hợp sức mạnh dân tộc với sức mạnh thời đại và cùng nhân dân thế giới đấu tranh vì hòa bình, độc lập dân tộc, dân chủ và tiến bộ xã hội.",
+    description: <Description1 />,
     imageUrl:
-      "https://cdn.britannica.com/02/181202-050-0E31A25F/Ho-Chi-Minh-1957.jpg",
+      "/images/image1.jpg",
     imageAlt: "Chân dung Chủ tịch Hồ Chí Minh năm 1957",
     category: "theory" as const,
-    year: "1920-1969",
     audioUrl: "/audio/ho-chi-minh-solidarity.mp3",
     relatedLinks: [
       {
@@ -49,15 +50,13 @@ const featuredExhibits = [
   },
   {
     id: "international-cooperation",
-    title: "Hợp tác Quốc tế",
-    subtitle: "Từ lý thuyết đến thực tiễn",
-    description:
-      "Những hoạt động hợp tác quốc tế cụ thể trong lịch sử Việt Nam",
+    title: "Lực lượng đoàn kết quốc tế và hình thức tổ chức",
+    subtitle: "Trong tư tưởng Hồ Chí Minh, lực lượng đoàn kết quốc tế là một yếu tố cốt lõi để đảm bảo thắng lợi cách mạng Việt Nam, được thực hiện thông qua việc phối hợp với các phong trào cộng sản và công nhân quốc tế, các dân tộc bị áp bức, các lực lượng tiến bộ trên thế giới, và xây dựng các mặt trận đoàn kết từ khu vực Đông Dương đến châu Á – châu Phi và toàn thế giới, nhằm tranh thủ sự ủng hộ chính trị, vật chất và tinh thần, củng cố uy tín và sức mạnh ngoại giao của cách mạng Việt Nam.",
+    description: <Description2 />,
     imageUrl:
-      "https://th.bing.com/th/id/OSK.HEROkpZoXE2N-dFmgT3K8Inrm-wjA24AnitBmo1JSwfoMGI?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "/images/image2.jpg",
     imageAlt: "Chủ tịch Hồ Chí Minh với các lãnh đạo quốc tế",
     category: "practice" as const,
-    year: "1945-1975",
     audioUrl: "/audio/international-cooperation.mp3",
     relatedLinks: [
       {
@@ -74,15 +73,14 @@ const featuredExhibits = [
   },
   {
     id: "peace-movement",
-    title: "Phong trào Hòa bình",
-    subtitle: "Đấu tranh vì hòa bình thế giới",
-    description:
-      "Vai trò của Việt Nam trong phong trào hòa bình và dân chủ thế giới",
+    title: "Nguyên Tắc Đoàn Kết",
+    subtitle: "Nguyên tắc đoàn kết theo tư tưởng Hồ Chí Minh là đoàn kết quốc tế trên cơ sở thống nhất mục tiêu, lợi ích, độc lập, tự chủ, kết hợp sức mạnh dân tộc với sức mạnh thời đại, trong đó nội lực là quyết định, ngoại lực là quan trọng.",
+    description: <Description3 />,
+
     imageUrl:
-      "https://e7.pngegg.com/pngimages/0/125/png-clipart-columbidae-bird-peace-symbols-pigeon-white-animals.png",
+      "/images/image3.jpg",
     imageAlt: "Biểu tượng chim bồ câu hòa bình",
     category: "historical" as const,
-    year: "1950-1975",
     audioUrl: "/audio/peace-movement.mp3",
     relatedLinks: [
       { title: "Phong trào hòa bình", url: "/peace", type: "video" as const },
@@ -173,14 +171,14 @@ export default function Home() {
               className="text-4xl md:text-5xl font-bold text-white"
               variants={slideUpFadeIn}
             >
-              Triển lãm Đặc biệt
+              Tư tưởng Hồ Chí Minh
             </motion.h2>
             <motion.p
               className="text-lg text-gray-300 max-w-3xl mx-auto"
               variants={slideUpFadeIn}
             >
-              Khám phá những khía cạnh sâu sắc nhất của tư tưởng đoàn kết quốc
-              tế qua các triển lễm tương tác và hiện vật lịch sử quý báu
+              Khám phá tư tưởng đoàn kết quốc tế qua nền tảng lý luận.,
+
             </motion.p>
           </div>
 
@@ -193,47 +191,6 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Key Statistics */}
-        {/* <motion.section
-          className="py-16 bg-gradient-to-r from-black/40 to-black/60 rounded-3xl border border-gray-800"
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-        >
-          <div className="text-center space-y-8">
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold text-white"
-              variants={slideUpFadeIn}
-            >
-              Thành tựu Nổi bật
-            </motion.h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {keyStatistics.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="text-center space-y-3"
-                    variants={slideUpFadeIn}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="mx-auto w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-red-500/20 rounded-2xl flex items-center justify-center">
-                      <Icon className={`w-8 h-8 ${stat.color}`} />
-                    </div>
-                    <div>
-                      <div className={`text-3xl font-bold ${stat.color}`}>
-                        {stat.value}
-                      </div>
-                      <div className="text-gray-400 text-sm">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </motion.section> */}
 
         {/* Quick Access  */}
         <motion.section

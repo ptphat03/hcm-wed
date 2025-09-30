@@ -1,0 +1,33 @@
+/* Description1.css */
+
+/* Chỉ áp dụng cho component Description1 */
+.description p {
+  font-size: 1.180rem; /* 18px */
+  line-height: 1.8;     /* giãn dòng */
+  color: #000000;       /* text-gray-700 */
+  text-align: justify;   /* canh đều 2 bên */
+  margin-bottom: 1rem;  /* khoảng cách giữa các <p> */
+}
+.description h3 {
+  font-size: 1.7rem;    /* 24px, bạn có thể tăng lên nếu muốn */
+  font-weight: 700;      /* đậm */
+  color: #1a202c;       /* text-gray-900 */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.description .highlight {
+  font-weight: bold;
+  color: #076450; /* đỏ nổi bật */
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.description h4 {
+  font-size: 1.18rem; /* text-lg */
+  font-weight: 700; /* bold */
+  color: #000000; /* màu xanh */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
