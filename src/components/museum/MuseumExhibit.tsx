@@ -18,7 +18,7 @@ interface MuseumExhibitProps {
   id: string;
   title: string;
   subtitle?: string;
-  description: string;
+  description: React.ReactNode;
   imageUrl: string;
   imageAlt: string;
   category: "theory" | "practice" | "historical" | "modern";
@@ -97,7 +97,7 @@ export const MuseumExhibit: React.FC<MuseumExhibitProps> = ({
     if (navigator.share) {
       navigator.share({
         title: title,
-        text: description,
+        text: typeof description === "string" ? description : "", // dùng string hoặc rỗng
         url: window.location.href + `#exhibit-${id}`,
       });
     }
