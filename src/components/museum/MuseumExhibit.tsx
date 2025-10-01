@@ -108,7 +108,7 @@ export const MuseumExhibit: React.FC<MuseumExhibitProps> = ({
       {/* Main Exhibit Card */}
       <motion.div
         id={`exhibit-${id}`}
-        className={`group relative ${className}`}
+        className={`group relative h-full flex flex-col ${className}`}
         variants={cardHover}
         initial="initial"
         whileHover="hover"
@@ -116,30 +116,30 @@ export const MuseumExhibit: React.FC<MuseumExhibitProps> = ({
         layout
       >
         <div
-          className={`
-          relative overflow-hidden rounded-2xl shadow-xl
-          bg-gradient-to-br ${config.bgColor}
-          border-4 ${config.borderColor}
-          transition-all duration-500
-          ${interactive ? "cursor-pointer" : ""}
-        `}
-        >
+    className={`
+      relative overflow-hidden rounded-2xl shadow-xl
+      bg-gradient-to-br ${config.bgColor}
+      border-4 ${config.borderColor}
+      transition-all duration-500
+      ${interactive ? "cursor-pointer" : ""}
+      h-full flex flex-col
+    `}
+  >
           {/* Category Badge */}
-          <div className="absolute top-4 left-4 z-10">
-            <motion.div
-              className={`
-                px-3 py-1 rounded-full text-sm font-semibold
-                bg-white/90 backdrop-blur-sm ${config.textColor}
-                border ${config.borderColor}
-              `}
-              variants={glow}
-              initial="initial"
-              animate="animate"
-            >
-              <span className="mr-1">{config.icon}</span>
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </motion.div>
-          </div>
+          {/* <div className="absolute top-4 left-4 z-10">
+          <motion.div
+            className={`
+              px-3 py-1 rounded-full text-sm font-semibold
+              bg-white/90 backdrop-blur-sm ${config.textColor}
+              border ${config.borderColor}
+            `}
+            variants={glow}
+            initial="initial"
+            animate="animate"
+          >
+          </motion.div>
+        </div> */}
+
 
           {/* Year Badge */}
           {year && (
@@ -198,7 +198,7 @@ export const MuseumExhibit: React.FC<MuseumExhibitProps> = ({
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-6 min-h-[250px] flex flex-col justify-between">
             <motion.h3
               className={`text-xl font-bold mb-2 ${config.textColor}`}
               variants={slideUpFadeIn}
@@ -207,47 +207,46 @@ export const MuseumExhibit: React.FC<MuseumExhibitProps> = ({
             </motion.h3>
 
             {subtitle && (
-              <motion.p
-                className={`text-sm ${config.iconColor} mb-3 font-medium`}
-                variants={slideUpFadeIn}
-              >
-                {subtitle}
-              </motion.p>
-            )}
-
+            <motion.p
+              className={`text-sm ${config.iconColor} mb-3 font-medium line-clamp-5`}
+              variants={slideUpFadeIn}
+            >
+              {subtitle}
+            </motion.p>
+          )}
             <motion.p
               className="text-gray-700 text-sm leading-relaxed mb-4"
               variants={slideUpFadeIn}
             >
-              {description}
             </motion.p>
 
             {/* Action Buttons */}
-            <div className="flex justify-between items-center">
-              <motion.button
-                onClick={() => setIsExpanded(true)}
-                className={`
-                  px-4 py-2 rounded-lg text-sm font-medium
-                  ${config.textColor} bg-white/70 hover:bg-white/90
-                  border ${config.borderColor}
-                  transition-colors flex items-center gap-2
-                `}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Info size={14} />
-                Tìm hiểu thêm
-              </motion.button>
+            <div className="flex justify-center items-center gap-3 mt-4">
+            <motion.button
+              onClick={() => setIsExpanded(true)}
+              className={`
+                px-4 py-2 rounded-lg text-sm font-medium
+                ${config.textColor} bg-white/70 hover:bg-white/90
+                border ${config.borderColor}
+                transition-colors flex items-center gap-2
+              `}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Info size={14} />
+              Tìm hiểu thêm
+            </motion.button>
 
-              <motion.button
-                onClick={handleShare}
-                className="p-2 text-gray-600 hover:text-gray-800 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Share2 size={16} />
-              </motion.button>
-            </div>
+            <motion.button
+              onClick={handleShare}
+              className="p-2 text-gray-600 hover:text-gray-800 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Share2 size={16} />
+            </motion.button>
+          </div>
+
           </div>
 
           {/* Interactive Indicator */}
@@ -259,142 +258,106 @@ export const MuseumExhibit: React.FC<MuseumExhibitProps> = ({
 
       {/* Expanded Modal */}
       <AnimatePresence>
-        {isExpanded && (
+      {isExpanded && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsExpanded(false)}
+        >
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsExpanded(false)}
+            className="absolute top-10 bottom-10 left-20 right-20 rounded-2xl shadow-2xl overflow-y-auto"
+            style={{
+              backgroundImage: "url('/images/old-paper2.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              border: "1px solid rgba(0,0,0,0.3)",
+            }}
+            initial={{ scale: 0.8, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 50 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden bg-white rounded-2xl shadow-2xl"
-              initial={{ scale: 0.8, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
+            {/* Close Button */}
+            <button
+              onClick={() => setIsExpanded(false)}
+              className="absolute top-4 right-4 z-10 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition-colors backdrop-blur-sm"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsExpanded(false)}
-                className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-sm"
-              >
-                <X size={20} />
-              </button>
+              <X size={20} />
+            </button>
 
-              {/* Modal Content */}
-              <div className="overflow-y-auto max-h-[90vh]">
-                {/* Header Image */}
-                <div className="relative h-80">
-                  <Image
-                    src={imageUrl}
-                    alt={imageAlt}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            {/* Modal Content */}
+            <div className="overflow-y-auto max-h-[90vh]">
+              {/* Header Image */}
+              <div className="relative h-100">
+                <Image
+                  src={imageUrl}
+                  alt={imageAlt}
+                  fill
+                  className="object-contain object-center bg-black"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <motion.h2
-                      className="text-3xl font-bold text-white mb-2"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      {title}
-                    </motion.h2>
-                    {subtitle && (
-                      <motion.p
-                        className="text-xl text-yellow-300"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        {subtitle}
-                      </motion.p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-8 space-y-6">
-                  {/* Description */}
-                  <motion.div
+                {/* Title Overlay */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <motion.h2
+                    className="text-3xl font-bold text-white mb-2 drop-shadow-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
+                    transition={{ delay: 0.2 }}
                   >
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800">
-                      Mô tả chi tiết
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed text-base">
-                      {description}
-                    </p>
-                  </motion.div>
-
-                  {/* Significance */}
-                  {significance && (
-                    <motion.div
-                      className="bg-yellow-50 border border-yellow-200 rounded-lg p-6"
+                    {title}
+                  </motion.h2>
+                  {subtitle && (
+                    <motion.p
+                      className="text-xl text-yellow-200 drop-shadow-md"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
+                      transition={{ delay: 0.3 }}
                     >
-                      <h3 className="text-xl font-semibold mb-3 text-yellow-800 flex items-center gap-2">
-                        <span>⭐</span>Ý nghĩa lịch sử
-                      </h3>
-                      <p className="text-yellow-700 leading-relaxed">
-                        {significance}
-                      </p>
-                    </motion.div>
+                      {subtitle}
+                    </motion.p>
                   )}
-
-                  {/* Related Links */}
-                  {/* {relatedLinks && relatedLinks.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                    >
-                      <h3 className="text-xl font-semibold mb-4 text-gray-800">
-                        Tài liệu liên quan
-                      </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {relatedLinks.map((link, index) => (
-                          <motion.a
-                            key={index}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            <ExternalLink
-                              size={16}
-                              className="text-gray-500 group-hover:text-gray-700"
-                            />
-                            <div>
-                              <div className="font-medium text-gray-800">
-                                {link.title}
-                              </div>
-                              <div className="text-sm text-gray-500 capitalize">
-                                {link.type}
-                              </div>
-                            </div>
-                          </motion.a>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )} */}
                 </div>
               </div>
-            </motion.div>
+
+              {/* Content */}
+              <div className="p-8 space-y-6">
+                {/* Description */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <div className="text-gray-800 leading-relaxed text-base">
+                    {description}
+                  </div>
+                </motion.div>
+
+                {/* Significance */}
+                {significance && (
+                  <motion.div
+                    className="bg-yellow-100/80 border border-yellow-300 rounded-lg p-6 shadow-md"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <h3 className="text-xl font-semibold mb-3 text-yellow-900 flex items-center gap-2">
+                      <span>⭐</span>Ý nghĩa lịch sử
+                    </h3>
+                    <p className="text-yellow-800 leading-relaxed">
+                      {significance}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      )}
+    </AnimatePresence>
     </>
   );
 };

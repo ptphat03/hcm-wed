@@ -16,7 +16,7 @@ const timelineEvents = [
     location: "Paris, Pháp",
     significance: "Hình thành nền tảng tư tưởng đoàn kết quốc tế",
     impact: "Chuyển từ chủ nghĩa dân tộc sang chủ nghĩa quốc tế vô sản",
-    image: "https://cdn.britannica.com/02/181202-050-0E31A25F/Ho-Chi-Minh-1957.jpg"
+    image: "/images/1920.png"
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const timelineEvents = [
     location: "Moskva, Liên Xô",
     significance: "Thiết lập mạng lưới quan hệ quốc tế",
     impact: "Nhận được sự ủng hộ từ Quốc tế Cộng sản",
-    image: "https://th.bing.com/th/id/OIP.kpZoXE2N-dFmgT3K8Inrm-wjA24AnitBmo1JSwfoMGI?o=7&rs=1&pid=ImgDetMain"
+    image: "/images/1924.jpg"
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const timelineEvents = [
     location: "Quảng Châu, Trung Quốc",
     significance: "Xây dựng lực lượng cách mạng có tổ chức",
     impact: "Đào tạo hàng trăm cán bộ cách mạng",
-    image: "https://cdn.britannica.com/02/181202-050-0E31A25F/Ho-Chi-Minh-1957.jpg"
+    image: "/images/1925.jpg"
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const timelineEvents = [
     location: "Hồng Kông",
     significance: "Có tổ chức lãnh đạo thống nhất",
     impact: "Lãnh đạo toàn bộ phong trào cách mạng Việt Nam",
-    image: "https://th.bing.com/th/id/OIP.kpZoXE2N-dFmgT3K8Inrm-wjA24AnitBmo1JSwfoMGI?o=7&rs=1&pid=ImgDetMain"
+    image: "/images/1930.jpg"
   },
   {
     id: 5,
@@ -60,7 +60,7 @@ const timelineEvents = [
     location: "Pác Bó, Cao Bằng",
     significance: "Mở rộng mặt trận đoàn kết",
     impact: "Tạo khối đoàn kết ba nước Đông Dương",
-    image: "https://cdn.britannica.com/02/181202-050-0E31A25F/Ho-Chi-Minh-1957.jpg"
+    image: "/images/1941.webp"
   },
   {
     id: 6,
@@ -71,7 +71,7 @@ const timelineEvents = [
     location: "Hà Nội, Việt Nam",
     significance: "Giành được chính quyền",
     impact: "Trở thành biểu tượng cho các dân tộc bị áp bức",
-    image: "https://th.bing.com/th/id/OIP.kpZoXE2N-dFmgT3K8Inrm-wjA24AnitBmo1JSwfoMGI?o=7&rs=1&pid=ImgDetMain"
+    image: "/images/1945.jpg"
   },
   {
     id: 7,
@@ -82,7 +82,7 @@ const timelineEvents = [
     location: "Điện Biên Phủ, Việt Nam",
     significance: "Thắng lợi lịch sử có tầm quốc tế",
     impact: "Khích lệ phong trào giải phóng dân tộc toàn cầu",
-    image: "https://cdn.britannica.com/02/181202-050-0E31A25F/Ho-Chi-Minh-1957.jpg"
+    image: "/images/1954.jpg"
   },
   {
     id: 8,
@@ -93,7 +93,7 @@ const timelineEvents = [
     location: "Bandung, Indonesia",
     significance: "Hội nhập cộng đồng quốc tế",
     impact: "Củng cố vị thế trong phong trào Á-Phi",
-    image: "https://th.bing.com/th/id/OIP.kpZoXE2N-dFmgT3K8Inrm-wjA24AnitBmo1JSwfoMGI?o=7&rs=1&pid=ImgDetMain"
+    image: "/images/1955.webp"
   },
   {
     id: 9,
@@ -104,7 +104,7 @@ const timelineEvents = [
     location: "Hoa Kỳ",
     significance: "Tạo mặt trận trong lòng kẻ thù",
     impact: "Góp phần chấm dứt chiến tranh Việt Nam",
-    image: "https://e7.pngegg.com/pngimages/0/125/png-clipart-columbidae-bird-peace-symbols-pigeon-white-animals.png"
+    image: "/images/1965.jpg"
   },
   {
     id: 10,
@@ -115,7 +115,7 @@ const timelineEvents = [
     location: "Hà Nội, Việt Nam",
     significance: "Ngoại giao nhân dân",
     impact: "Khơi dậy lương tri nhân loại",
-    image: "https://cdn.britannica.com/02/181202-050-0E31A25F/Ho-Chi-Minh-1957.jpg"
+    image: "/images/1967.jpg"
   }
 ];
 
