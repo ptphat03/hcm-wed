@@ -47,8 +47,9 @@ export default function RootLayout({
   return (
     <html lang="vi" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${playfairDisplay.variable} font-inter antialiased bg-black text-white selection:bg-yellow-400 selection:text-black`}
-      >
+  className={`${inter.variable} ${playfairDisplay.variable} font-inter antialiased bg-gray-900 text-white selection:bg-yellow-400 selection:text-black`}
+>
+
         <LayoutProvider>
           <div className="flex flex-col min-h-screen">
             <Navigation />
